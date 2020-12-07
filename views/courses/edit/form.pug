@@ -1,0 +1,16 @@
+form.ui.form.form-add-course(action="/course/edit" method="POST")
+  .field.required
+    label(for="title") Название
+    .field.inline
+      input.form-add-course__input(id="title" name="title" placeholder="Frontend Developer" value=course.title)
+      .ui.form-add-course__message.label.prompt.pointing.red.transition.hidden Введите название курса
+  .field.required
+    label(for="price") Стоимость
+    input.form-add-course__input(id="price" name="price" type="number" min="0" placeholder="1488" value=course.price)
+    .ui.form-add-course__message.label.prompt.pointing.red.transition.hidden Введите стоимость курса
+  .field
+    label(for="logoUrl") Логотип
+    input.form-add-course__input(id="logoUrl" name="logoUrl" placeholder="URL" value=course.logoUrl)
+  input(type="hidden" name="id" value=course.id)
+  button.ui.button Редактировать
+script(src="/assets/js/forms/validate.js" defer)

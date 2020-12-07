@@ -1,0 +1,29 @@
+extend ./layouts/default.pug
+
+append content
+  .cart
+    if courses.length
+      table.ui.very.basic.table
+        thead
+          tr
+            th Название
+            th Количество
+            th Цена
+            th Действия
+        tbody
+          each course in courses
+            tr
+              td= course.title
+              td= course.count
+              td.jsPrice= course.price
+              td
+                .ui.buttons
+                  button.ui.button.basic.red.icon.js-cart-remove-course(data-id=course.id)
+                    i.icon.remove
+      .ui.divider
+      h1.header
+        span Итого: 
+        span.jsCartTotal.jsPrice= totalCost
+    else
+      p Курсы не добавлены
+    script(src="/assets/js/cart.js" defer)

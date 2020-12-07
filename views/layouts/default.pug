@@ -1,0 +1,15 @@
+include ../partials/head.pug
+body
+  main.main
+    section.ui.container.main-header
+      header
+        include ../partials/header.pug
+    section.ui.container.main-content
+      .content
+        block content
+          h1.ui.header #{title}
+    section.ui.container.main-footer
+      footer
+        block footer
+        include ../partials/footer.pug
+  include ../partials/scripts.pug

@@ -1,0 +1,66 @@
+/* Basic */
+body {
+  margin-top: 60px;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* Cosmetic */
+.reset-style {
+  all: unset;
+}
+
+
+/* Layout */
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.main-content {
+  padding: 30px 0;
+  flex: 1 0 auto;
+}
+
+
+/* Courses */
+.form-add-course {
+  max-width: 600px !important;
+}
+
+.form-add-course__input {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+
+.form-add-course__message {
+  max-width: 200px;
+  vertical-align: baseline !important;
+}
+
+.course-card__image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 290px;
+}
+
+.course {
+  text-align: center;
+}
+
+.course__logo {
+  max-width: 300px;
+}
+
+.course__price {
+  font-size: 30px;
+}
+
+/* Cart */

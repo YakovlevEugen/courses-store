@@ -22,4 +22,22 @@ $(document).ready(function() {
       });
     });
   }
+
+  $('.jsRemoveCourse').on('click', event => {
+    event.preventDefault();
+
+    const id = $(event.target.form).find('input[name="id"]').val();
+
+    fetch(`/course/remove/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        if (res.status === 200) {
+          window.location = '/courses';
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 });

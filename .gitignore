@@ -1,3 +1,13 @@
+# IDE
+.idea
+
+# sublime notes and todos
+*.note
+*.todo
+
+# MacOS folder settings
+.DS_Store
+
 # Logs
 logs
 *.log

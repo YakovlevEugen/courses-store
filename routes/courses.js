@@ -7,7 +7,7 @@ const router = Router()
 /** GET */
 router.get('/courses', async (req, res) => {
   try {
-    const courses = await Course.find()
+    const courses = await Course.find().populate('author', 'email name')
 
     res.render('courses', {
       title: 'Курсы',
@@ -61,6 +61,7 @@ router.post('/course/add', async (req, res) => {
   const course = new Course({
     title: req.body.title,
     price: req.body.price,
+    author: req.user,
     logoUrl: req.body.logoUrl
   })
   

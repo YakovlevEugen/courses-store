@@ -9,6 +9,10 @@ const courses = new Schema({
     type: Number,
     required: true
   },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   logoUrl: String
 })
 

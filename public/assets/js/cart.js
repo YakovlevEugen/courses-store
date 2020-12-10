@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  const cartElement = $('.cart');
+  const cartElement = $('.cart')
 
   cartElement.on('click', event => {
     if ($(event.target).hasClass('js-cart-remove-course')) {
-      const id = event.target.dataset.id;
+      const id = event.target.dataset.id
 
       fetch(`/cart/remove/${id}`, {
         method: 'delete'
@@ -23,19 +23,19 @@ $(document).ready(function() {
                   </div>
                 </td>
               </tr>
-            `).join('');
-            cartElement.find('tbody').html(html);
+            `).join('')
+            cartElement.find('tbody').html(html)
             cartElement.find('.jsCartTotal').text(new Intl.NumberFormat('ru-RU', {
               currency: 'rub',
               style: 'currency'
             }).format(cart.totalCost))
           } else {
-            cartElement.html('<p>Курсы не добавлены</p>');
+            cartElement.html('<p>Курсы не добавлены</p>')
           }
         })
           .catch(err => {
-            console.log(err);
+            console.log(err)
           })
     }
-  });
-});
+  })
+})

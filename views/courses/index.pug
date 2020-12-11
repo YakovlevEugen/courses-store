@@ -4,7 +4,7 @@ append content
   .ui.cards
     each course in courses
       .card.course-card
-        a.image.course-card__image(href=`courses/${course.id}`)
+        a.image.course-card__image(href=`courses/${course._id}`)
           img(src=course.logoUrl alt=`Курс ${course.title}`)
         .content
           .header= course.title
@@ -12,10 +12,10 @@ append content
           i.icon.money.bill.alternate
           span.jsPrice= course.price
         .ui.bottom.attached.buttons.icon
-          a.ui.button.basic.grey(href=`/course/${course.id}/edit?allow=true`)
+          a.ui.button.basic.grey(href=`/course/${course._id}/edit?allow=true`)
             i.icon.shopping.edit
           form.ui.button.basic.green(action="/cart/add" method="POST")
-            input(type="hidden" name="id" value=course.id)
+            input(type="hidden" name="id" value=course._id)
             button.reset-style
               i.icon.shopping.basket
     else

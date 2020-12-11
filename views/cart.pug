@@ -26,4 +26,6 @@ append content
         span.jsCartTotal.jsPrice= totalCost
     else
       p Курсы не добавлены
+    form(action="/orders" method="POST")
+      button.ui.button.basic.green Сделать заказ
     script(src="/assets/js/cart.js" defer)

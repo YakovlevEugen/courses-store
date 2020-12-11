@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const Courses = require('../models/courses')
+const Course = require('../models/course')
 
 const router = new Router()
 
@@ -21,8 +21,6 @@ router.get('/cart', async (req, res) => {
     .populate('cart.items.courseId')
     .execPopulate()
   const courses = mapCartItems(user.cart)
-
-  console.log(courses)
   
   res.render('cart', {
     title: 'Корзина',
@@ -35,7 +33,7 @@ router.get('/cart', async (req, res) => {
 /** POST */
 router.post('/cart/add', async (req, res) => {
   try {
-    const course = await Courses.findById(req.body.id)
+    const course = await Course.findById(req.body.id)
 
     await req.user.addToCart(course)
   } catch (err) {
@@ -48,7 +46,13 @@ router.post('/cart/add', async (req, res) => {
 
 /** DELETE */
 router.delete('/cart/remove/:id', async (req, res) => {
-  const cart = await Cart.remove(req.params.id)
+  await req.user.removeFromCart(req.params.id)
+  const user = await req.user.populate('cart.items.courseId').execPopulate()
+  const courses = mapCartItems(user.cart)
+  const cart = {
+    courses,
+    price: computeTotal(courses)
+  }
 
   res.status(200).json(cart)
 })

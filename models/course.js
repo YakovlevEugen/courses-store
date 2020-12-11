@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-const courses = new Schema({
+const courseSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -16,4 +16,4 @@ const courses = new Schema({
   logoUrl: String
 })
 
-module.exports = model('Courses', courses)
+module.exports = model('Course', courseSchema)

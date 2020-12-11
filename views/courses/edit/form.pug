@@ -11,7 +11,7 @@ form.ui.form.form-add-course(action="/course/edit" method="POST")
   .field
     label(for="logoUrl") Логотип
     input.form-add-course__input(id="logoUrl" name="logoUrl" placeholder="URL" value=course.logoUrl)
-  input(type="hidden" name="id" value=course.id)
+  input(type="hidden" name="id" value=course._id)
   div
     button.ui.button Редактировать
     button.ui.button.basic.red.jsRemoveCourse Удалить

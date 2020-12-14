@@ -1,0 +1,30 @@
+extend ../layouts/default.pug
+
+append content
+  if orders.length
+    table.ui.very.table
+      thead
+        tr
+          th Номер заказа
+          th Наименования
+          th Дата создания
+          th Стоимость
+          th 
+      tbody
+        each order in orders
+          tr
+            td= order._id
+            td
+              table.ui.celled.striped.table
+                each orderItem, index in order.courses
+                  tr
+                    td= (index + 1)
+                    td= orderItem.course.title
+                    td= orderItem.count
+                    td.jsPrice= orderItem.count * orderItem.course.price
+            td.jsDate= order.date
+            td
+              b.jsPrice= order.totalCost
+            td 
+        else
+          p Заказов нет

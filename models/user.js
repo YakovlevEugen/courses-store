@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
   email: {
@@ -56,6 +56,12 @@ userSchema.methods.removeFromCart = function(id) {
   }
 
   this.cart = { items }
+
+  return this.save()
+}
+
+userSchema.methods.clearCart = function(id) {
+  this.cart = {items: []}
 
   return this.save()
 }

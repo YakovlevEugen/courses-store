@@ -4,8 +4,9 @@ block content
   .course
     h1.ui.header
       | #{title}&nbsp;&nbsp;
-      a(href=`/course/${course._id}/edit?allow=true`)
-        i.icon.edit
+      if isAuth
+        a(href=`/course/${course._id}/edit?allow=true`)
+          i.icon.edit
     img.course__logo(src=course.logoUrl alt=title)
     p.description Рабы природы, раста патриоты
       | Расхитители грибниц круче мать твою убийц

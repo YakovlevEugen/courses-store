@@ -4,6 +4,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 const path = require('path')
 const routes = require('./routes/')
+const userMiddleware = require('./middleware/user')
 const variablesMiddleware = require('./middleware/variables')
 
 const PORT = process.env.PORT || 3000
@@ -28,6 +29,7 @@ app.use(session({
   store
 }))
 app.use(variablesMiddleware)
+app.use(userMiddleware)
 routes.forEach(route => {app.use(route)})
 
 start()

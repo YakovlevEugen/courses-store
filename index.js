@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const path = require('path')
 const routes = require('./routes/')
-const User = require('./models/user')
 const variablesMiddleware = require('./middleware/variables')
 
 const PORT = process.env.PORT || 3000
@@ -14,17 +13,6 @@ app.engine('pug', require('pug').__express)
 app.set('views', './views')
 app.set('view engine', 'pug')
 
-app.use(async (req, res, next) => {
-  try {
-    const adminUserId = '5fd0c9a4df41834cc1b83a34'
-    const user = await User.findById(adminUserId)
-
-    req.user = user
-    next()
-  } catch (err) {
-    console.log(err)
-  }
-})
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: false}))
 app.use(session({
@@ -47,19 +35,6 @@ async function start() {
       useUnifiedTopology: true,
       useFindAndModify: false
     })
-
-    const candidate = await User.findOne()
-
-    if (!candidate) {
-      const user = new User({
-        email: 'yae@test.ru',
-        name: 'Eugen',
-        cart: {
-          items: []
-        }
-      })
-      await user.save()
-    }
   
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`)

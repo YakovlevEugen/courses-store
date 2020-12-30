@@ -9,11 +9,6 @@ const router = Router()
 router.get('/orders', authMiddleware, async (req, res) => {
   try {
     const orders = await Order.find({'user.userId': req.user._id}).populate('user.userId')
-    
-    console.log(orders.map(order => ({
-      ...order._doc,
-      totalCost: order.courses.reduce((total, c) => total += c.count * c.course.price, 0)
-    })));
 
     res.render('orders', {
       title: 'Заказы',

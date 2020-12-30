@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   if (formAuth) {
     const validatedFields = {
-      email: 'empty',
+      email: 'email',
       password: 'empty'
     }
     const formAuthValidatedFields = $('.form-auth__input').filter((i, item) => validatedFields[item.name])

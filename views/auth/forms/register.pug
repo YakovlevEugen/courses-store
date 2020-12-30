@@ -8,8 +8,11 @@ form.ui.form.form-register(action="/auth/register" method="POST")
     input.form-register__input(id="reg-password" name="password" type="password")
     .ui.form-register__message.label.prompt.pointing.red.transition.hidden Введите пароль
   .field
-    label(for="confirm-password") Подтвердите пароль
-    input.form-register__input(id="confirm-password" name="confirm-password" type="password")
+    label(for="confirmPassword") Подтвердите пароль
+    input.form-register__input(id="confirmPassword" name="confirmPassword" type="password")
     .ui.form-register__message.label.prompt.pointing.red.transition.hidden Введите пароль второй раз
+  .field
+    label(for="name") Имя
+    input.form-register__input(id="name" name="name")
   button.ui.button Зарегистрироваться
 script(src="/assets/js/forms/register.js" defer)

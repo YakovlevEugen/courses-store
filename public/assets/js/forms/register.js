@@ -3,9 +3,9 @@ $(document).ready(function() {
 
   if (formRegister) {
     const validatedFields = {
-      email: 'empty',
+      email: 'email',
       password: 'empty',
-      'confirm-password': 'empty'
+      confirmPassword: 'empty'
     }
     const formRegisterValidatedFields = $('.form-register__input').filter((i, item) => validatedFields[item.name])
 

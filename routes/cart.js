@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const Course = require('../models/course')
+const authMiddleware = require('../middleware/auth')
 
 const router = new Router()
 
@@ -16,7 +17,7 @@ function computeTotal(courses) {
 
 
 /** GET */
-router.get('/cart', async (req, res) => {
+router.get('/cart', authMiddleware, async (req, res) => {
   const user = await req.user
     .populate('cart.items.courseId')
     .execPopulate()
@@ -31,7 +32,7 @@ router.get('/cart', async (req, res) => {
 
 
 /** POST */
-router.post('/cart/add', async (req, res) => {
+router.post('/cart/add', authMiddleware, async (req, res) => {
   try {
     const course = await Course.findById(req.body.id)
 
@@ -45,7 +46,7 @@ router.post('/cart/add', async (req, res) => {
 
 
 /** DELETE */
-router.delete('/cart/remove/:id', async (req, res) => {
+router.delete('/cart/remove/:id', authMiddleware, async (req, res) => {
   await req.user.removeFromCart(req.params.id)
   const user = await req.user.populate('cart.items.courseId').execPopulate()
   const courses = mapCartItems(user.cart)

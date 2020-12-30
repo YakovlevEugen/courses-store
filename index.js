@@ -1,8 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const session = require('express-session')
 const path = require('path')
 const routes = require('./routes/')
 const User = require('./models/user')
+const variablesMiddleware = require('./middleware/variables')
 
 const PORT = process.env.PORT || 3000
 const app = express()
@@ -25,6 +27,12 @@ app.use(async (req, res, next) => {
 })
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: false}))
+app.use(session({
+  secret: 'someString',
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(variablesMiddleware)
 routes.forEach(route => {app.use(route)})
 
 start()

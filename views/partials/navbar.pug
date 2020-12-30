@@ -1,14 +1,19 @@
 // TODO: add active link class on item
 nav.ui.menu.fixed.top
-  .item.logo(href="/")
+  .item.logo
     img.ui(src="/images/logo.png", alt="Логотип")
   a.item(href="/") Главная
   a.item(href="/courses") Курсы
-  a.item(href="/course/add") Добавить курс
+  if isAuth
+    a.item(href="/course/add") Добавить курс
   a.item(href="/about") О нас
   .right.menu
-    a.item(href="/orders") Заказы
-    a.item(href="/cart")
-      i.icon.shopping.basket
-      span Корзина
-    a.item(href="/auth#/auth") Войти
+    if isAuth
+      a.item(href="/orders") Заказы
+      a.item(href="/cart")
+        i.icon.shopping.basket
+        span Корзина
+      a.item(href="/auth/logout") Выйти
+    else
+      a.item(href="/auth#/login") Войти
+      a.item(href="/auth#/register") Зарегистрироваться

@@ -7,5 +7,6 @@ form.ui.form.form-auth(action="/auth/login" method="POST")
     label(for="password") Пароль
     input.form-auth__input(id="password" name="password" type="password")
     .ui.form-auth__message.label.prompt.pointing.red.transition.hidden Введите пароль
+  input(type="hidden" name="_csrf" value=csrf)
   button.ui.button Войти
 script(src="/assets/js/forms/auth.js" defer)

@@ -18,13 +18,14 @@ append content
               td.jsPrice= course.price
               td
                 .ui.buttons
-                  button.ui.button.basic.red.icon.js-cart-remove-course(data-id=course._id)
+                  button.ui.button.basic.red.icon.js-cart-remove-course(data-id=course._id data-csrf=csrf)
                     i.icon.remove
       .ui.divider
       h1.header
         span Итого: 
         span.jsCartTotal.jsPrice= totalCost
       form(action="/orders" method="POST")
+        input(type="hidden" name="_csrf" value=csrf)
         button.ui.button.basic.green Сделать заказ
     else
       p Курсы не добавлены

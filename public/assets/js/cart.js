@@ -4,9 +4,13 @@ $(document).ready(function() {
   cartElement.on('click', event => {
     if ($(event.target).hasClass('js-cart-remove-course')) {
       const id = event.target.dataset.id
+      const csrf = event.target.dataset.csrf
 
       fetch(`/cart/remove/${id}`, {
-        method: 'delete'
+        method: 'delete',
+        headers: {
+          'X-XSRF-TOKEN': csrf
+        }
       }).then(res => res.json())
         .then(cart => {
           if (cart.courses.length) {

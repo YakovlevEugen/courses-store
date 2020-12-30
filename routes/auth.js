@@ -21,7 +21,7 @@ router.post('/auth/login', async (req, res) => {
     const candidate = await User.findOne({email})
 
     if (!candidate) {
-      res.redirect('/auth')
+      return res.redirect('/auth')
     }
 
     const areSame = await bcrypt.compare(password, candidate.password)

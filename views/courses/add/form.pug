@@ -11,5 +11,6 @@ form.ui.form.form-add-course(action="/course/add" method="POST")
   .field
     label(for="logoUrl") Логотип
     input.form-add-course__input(id="logoUrl" name="logoUrl" placeholder="URL")
+  input(type="hidden" name="_csrf" value=csrf)
   button.ui.button Добавить
 script(src="/assets/js/forms/course.js" defer)

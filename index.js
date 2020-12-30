@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 const path = require('path')
+const csurf = require('csurf')
 const routes = require('./routes/')
 const userMiddleware = require('./middleware/user')
 const variablesMiddleware = require('./middleware/variables')
@@ -28,6 +29,7 @@ app.use(session({
   saveUninitialized: false,
   store
 }))
+app.use(csurf())
 app.use(variablesMiddleware)
 app.use(userMiddleware)
 routes.forEach(route => {app.use(route)})

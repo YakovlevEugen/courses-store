@@ -27,9 +27,13 @@ $(document).ready(function() {
     event.preventDefault()
 
     const id = $(event.target.form).find('input[name="id"]').val()
+    const csrf = event.target.dataset.csrf
 
     fetch(`/course/remove/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'X-XSRF-TOKEN': csrf
+      }
     })
       .then(res => {
         if (res.status === 200) {

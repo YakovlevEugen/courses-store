@@ -14,5 +14,6 @@ form.ui.form.form-register(action="/auth/register" method="POST")
   .field
     label(for="name") Имя
     input.form-register__input(id="name" name="name")
+  input(type="hidden" name="_csrf" value=csrf)
   button.ui.button Зарегистрироваться
 script(src="/assets/js/forms/register.js" defer)

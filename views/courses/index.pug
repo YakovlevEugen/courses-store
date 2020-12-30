@@ -18,6 +18,7 @@ append content
               i.icon.shopping.edit
             form.ui.button.basic.green(action="/cart/add" method="POST")
               input(type="hidden" name="id" value=course._id)
+              input(type="hidden" name="_csrf" value=csrf)
               button.reset-style
                 i.icon.shopping.basket
     else

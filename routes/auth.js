@@ -6,7 +6,10 @@ const { ADMIN_ID } = require('../constants/users.js')
 const router = Router()
 
 router.get('/auth', (req, res) => {
-  res.render('auth')
+  res.render('auth', {
+    loginError: req.flash('loginError'),
+    registerError: req.flash('registerError')
+  })
 })
 
 router.get('/auth/logout', (req, res) => {
@@ -21,6 +24,7 @@ router.post('/auth/login', async (req, res) => {
     const candidate = await User.findOne({email})
 
     if (!candidate) {
+      req.flash('loginError', 'Неверный пароль или email')
       return res.redirect('/auth')
     }
 
@@ -50,6 +54,7 @@ router.post('/auth/register', async (req, res) => {
     const candidate = await User.findOne({ email })
 
     if (candidate) {
+      req.flash('registerError', 'Пользователь с таким email уже существует')
       res.redirect('/auth#/register')
     } else {
       const hashPassword = await bcrypt.hash(password, 10)

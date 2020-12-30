@@ -1,0 +1,15 @@
+form.ui.form.form-register(action="" method="POST")
+  .field
+    label(for="reg-email") Email
+    input.form-register__input(id="reg-email" name="email" placeholder="Email")
+    .ui.form-register__message.label.prompt.pointing.red.transition.hidden Введите Email
+  .field
+    label(for="reg-password") Пароль
+    input.form-register__input(id="reg-password" name="password" type="password")
+    .ui.form-register__message.label.prompt.pointing.red.transition.hidden Введите пароль
+  .field
+    label(for="confirm-password") Подтвердите пароль
+    input.form-register__input(id="confirm-password" name="confirm-password" type="password")
+    .ui.form-register__message.label.prompt.pointing.red.transition.hidden Введите пароль второй раз
+  button.ui.button Зарегистрироваться
+script(src="/assets/js/forms/register.js" defer)

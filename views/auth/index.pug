@@ -1,0 +1,11 @@
+extend ../layouts/center.pug
+block content
+  .ui.top.attached.tabular.menu.auth-tabs
+    a.item.active(data-tab="login") Войти
+    a.item(data-tab="register") Зарегистрироваться
+  .ui.bottom.attached.active.tab.segment(data-tab="login")
+    include ./forms/auth.pug
+  .ui.bottom.attached.tab.segment(data-tab="register")
+    include ./forms/register.pug
+  script(src="/assets/js/libs/jquery-address.js" defer)
+  script(src="/assets/js/auth.js" defer)

@@ -24,8 +24,8 @@ append content
       h1.header
         span Итого: 
         span.jsCartTotal.jsPrice= totalCost
+      form(action="/orders" method="POST")
+        button.ui.button.basic.green Сделать заказ
     else
       p Курсы не добавлены
-    form(action="/orders" method="POST")
-      button.ui.button.basic.green Сделать заказ
     script(src="/assets/js/cart.js" defer)

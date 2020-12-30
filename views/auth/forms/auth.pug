@@ -1,0 +1,11 @@
+form.ui.form.form-auth(action="" method="POST")
+  .field
+    label(for="email") Email
+    input.form-auth__input(id="email" name="email" placeholder="Email")
+    .ui.form-auth__message.label.prompt.pointing.red.transition.hidden Введите Email
+  .field
+    label(for="password") Пароль
+    input.form-auth__input(id="password" name="password" type="password")
+    .ui.form-auth__message.label.prompt.pointing.red.transition.hidden Введите пароль
+  button.ui.button Войти
+script(src="/assets/js/forms/auth.js" defer)
